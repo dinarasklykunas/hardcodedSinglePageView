@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-header {
+    padding: .5rem;
+}
+
+.search, .login {
+    text-align: right;
+}
+
+.main-menu, .footer {
+    padding: 1rem;
+    text-align: center;
+}
+
+.carousel {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+.articles article {
+    margin: 1rem;
+    max-height: 15vh;
+    overflow: hidden;
+}
+
+.articles article > h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+    .main-header {
+        display: grid;
+        grid-template-columns: 70% auto auto;
+        align-items: center;
+    }
+
+    .main-menu {
+        text-align: left;
+    }
+
+    .carousel {
+        width: 80%;
+    }
+
+    .articles {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .articles article {
+        width: 20%;
+        margin: 1rem;
+    }
+
+    .footer {
+        text-align: left;
+    }
+}
