@@ -1,9 +1,8 @@
 let id = new URLSearchParams(location.search).get('id')
 const editItemForm = document.querySelector('#editItemForm')
-const deleteButton = document.querySelector('#deleteButton')
 const alertMessage = document.querySelector('#alert')
 
-const { title, date, image, content } = editItemForm.elements
+const { title, date, image, content, submitButton, deleteButton } = editItemForm.elements
 
 function fillInFormFields() {
     if (!id)
@@ -43,6 +42,8 @@ function handleEditSubmit(e) {
         content: content.value
     }
 
+    submitButton.disabled = true
+
     fetch(`http://localhost:3000/items/${id}`, {
         method: 'PUT',
         headers: {
@@ -51,9 +52,13 @@ function handleEditSubmit(e) {
         body: JSON.stringify(item)
     })
     .then(res => {
+        submitButton.disabled = false
         return res.status !== 200 ? showAlert(res.statusText, 'danger') : showAlert('Item was updated!', 'success')
     })
-    .catch(err => showAlert(err, 'danger'))
+    .catch(err => {
+        submitButton.disabled = false
+        showAlert(err, 'danger')
+    })
 }
 
 function handleDelete() {
@@ -63,13 +68,18 @@ function handleDelete() {
     if (!confirm('Do you really want to delete this item?'))
         return
     
+    deleteButton.disabled = true
+
     fetch(`http://localhost:3000/items/${id}`, {
         method: 'DELETE'
     })
     .then(res => {
-        if (res.status !== 200)
+        if (res.status !== 200) {
+            deleteButton.disabled = false
             return showAlert(res.statusText, 'danger')
+        }
 
+        deleteButton.disabled = false
         showAlert('Item was deleted!', 'success')
         id = 0
         editItemForm.reset()
@@ -77,7 +87,10 @@ function handleDelete() {
             location.href = 'index.html'
         }, 1000);
     })
-    .catch(err => showAlert(err, 'danger'))
+    .catch(err => {
+        deleteButton.disabled = false
+        showAlert(err, 'danger')
+    })
 }
 
 function showAlert(message, type) {

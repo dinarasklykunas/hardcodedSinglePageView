@@ -13,13 +13,6 @@
       "image": "./assets/img/products/desktop-kit-raspberry-pi-4b-4gb-ram-rinkinys-su-dezute-klaviatura-ir-pele-136196-228x228.jpg",
       "content": "122,5 € <small><s>175,00 €</s></small>",
       "id": 2
-    },
-    {
-      "title": "Arduino Nano",
-      "date": "2021-02-04",
-      "image": "https://images-na.ssl-images-amazon.com/images/I/71%2BvvX%2BVCWL._AC_SX450_.jpg",
-      "content": "9,99 €",
-      "id": 3
     }
   ]
 }

@@ -1,25 +1,25 @@
 const newItemForm = document.querySelector('#newItemForm')
 const alertMessage = document.querySelector('#alert')
 
+const { title, date, image, content, submitButton } = newItemForm.elements
+
 function handleNewItemSubmit(e) {
     e.preventDefault()
-    let title = newItemForm.elements['title'].value
-    let date = newItemForm.elements['date'].value
-    let image = newItemForm.elements['image'].value
-    let content = newItemForm.elements['content'].value
 
-    if (!title || !date || !image || !content) {
+    if (!title.value || !date.value || !image.value || !content.value) {
         showAlert('All fields must be entered!', 'danger')
         return
     }
 
-    handleCreate(title, date, image, content)
+    handleCreate(title.value, date.value, image.value, content.value)
 }
 
 function handleCreate(title, date, image, content) {
     let item = {
         title, date, image, content
     }
+
+    submitButton.disabled = true
 
     fetch('http://localhost:3000/items', {
         method: 'POST',
@@ -29,13 +29,19 @@ function handleCreate(title, date, image, content) {
         body: JSON.stringify(item)
     })
     .then(res => {
-        if (res.status !== 201)
+        if (res.status !== 201) {
+            submitButton.disabled = false
             return showAlert(res.statusText, 'danger')
+        }
         
+        submitButton.disabled = false
         showAlert('Item was created!', 'success')
         newItemForm.reset()
     })
-    .catch(err => showAlert('Server error', 'danger'))
+    .catch(err => {
+        submitButton.disabled = false
+        showAlert('Server error', 'danger')
+    })
 }
 
 function showAlert(message, type) {
