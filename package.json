@@ -1,0 +1,25 @@
+{
+  "name": "hardcodedSinglePageView",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server -c configs/bs-config.json",
+    "server": "json-server --watch database/db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinarasklykunas/hardcodedSinglePageView.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dinarasklykunas/hardcodedSinglePageView/issues"
+  },
+  "homepage": "https://github.com/dinarasklykunas/hardcodedSinglePageView#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "dependencies": {}
+}

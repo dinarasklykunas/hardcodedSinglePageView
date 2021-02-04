@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/icons.css">
+    <link rel="icon" href="./assets/img/favicons/favicon-16x16.png">
+    <link rel="stylesheet" href="https://nc4-visma.s3.eu-north-1.amazonaws.com/v4.7.1/dist/css/nc.min.css">
+    <script src="./assets/js/editItem.js" defer></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="row align-items-center text-center">
+            <div class="col-sm-8 text-sm-left">
+                <a href="/">
+                    <img src="./assets/img/sample-logo.png" width="150" alt="logo">
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <input type="search" placeholder="Search...">
+            </div>
+            <div class="login text-center col-sm-1">
+                <a href="#login">
+                    <img src="./assets/img/user-avatar.svg" width="30" alt="account" title="Account">
+                </a>
+            </div>
+        </div>
+    </header>
+    <header class="main-menu text-center text-sm-left">
+        <nav>
+            <a href="/">Homepage</a>
+            <a href="#products">Products</a>
+            <a href="#products">Help</a>
+            <a href="#about-us">About Us</a>
+        </nav>
+    </header>
+    <main>
+        <section class="form">
+            <header>
+                <h2>
+                    Edit Item
+                </h2>
+            </header>
+            <p id="alert" class="alert hidden"></p>
+            <form action="" method="POST" class="form-horizontal" id="editItemForm">
+                <div class="form-group">
+                    <label for="inputTitle" class="col-md-1 control-label">Title</label>
+                    <div class="col-md-5">
+                        <input type="text" name="title" class="form-control" id="inputTitle" placeholder="Title" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputDate" class="col-md-1 control-label">Date</label>
+                    <div class="col-md-5">
+                        <input type="date" name="date" class="form-control" id="inputDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputImage" class="col-md-1 control-label">Image URL</label>
+                    <div class="col-md-5">
+                        <input type="text" name="image" class="form-control" id="inputImage" placeholder="Image URL" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputContent" class="col-md-1 control-label">Content</label>
+                    <div class="col-md-5">
+                        <textarea name="content" id="inputContent" cols="30" rows="10" class="form-control" placeholder="Content" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5 offset-md-1 d-sm-flex">
+                        <button type="submit" class="btn btn-primary w-100">Save</button>
+                        <button type="button" id="deleteButton" class="btn btn-danger w-100">Delete</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5 offset-md-1 d-sm-flex">
+                        <a href="index.html" class="btn w-100">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer class="footer d-flex justify-content-center align-items-center text-center">
+        <p>
+            Copyright &copy; 2021 "Hardcoded Single Page View" <b>All rights reserved</b>
+        </p>
+    </footer>
+</body>
+</html>

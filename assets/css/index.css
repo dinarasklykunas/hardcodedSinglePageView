@@ -1,3 +1,4 @@
+/* -------------------- Global -------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +18,8 @@ body {
     background: ghostwhite;
 }
 
+/* -------------------- Main Header -------------------- */
+
 .main-header {
     padding: 0 3rem;
     background: rgb(232, 232, 255);
@@ -26,12 +29,19 @@ body {
     margin: 1rem 0;
 }
 
-.main-menu {
-    padding: 1rem 2rem;
-    line-height: 1.5rem;
+.main-header a {
+    color: darkslateblue;
+    text-decoration: none;
+    transition: color .25s;
 }
 
-.main-header a,
+/* -------------------- Main Menu -------------------- */
+
+.main-menu {
+    padding: 1rem 2rem;
+    line-height: 1.7;
+}
+
 .main-menu a {
     color: darkslateblue;
     text-decoration: none;
@@ -46,6 +56,8 @@ body {
     content: " |";
 }
 
+/* -------------------- Carousel -------------------- */
+
 .carousel {
     width: 100%;
     background: white;
@@ -58,6 +70,8 @@ body {
     max-width: 100%;
 }
 
+/* -------------------- Articles -------------------- */
+
 .articles {
     margin: 7.5rem 0;
 }
@@ -68,7 +82,7 @@ body {
 
 .articles article {
     margin: 1rem;
-    line-height: 1.5rem;
+    line-height: 1.7;
     overflow: hidden;
     transition: background-color .25s;
 }
@@ -86,8 +100,22 @@ body {
 }
 
 .articles article img {
-    max-width: 100%;
+    max-width: 288px;
+    max-height: 288px;
 }
+
+/* -------------------- Form -------------------- */
+.form {
+    padding: 1rem 2rem;
+    margin: 2rem 0;
+}
+
+.form header {
+    border-bottom: 1px solid rgb(232, 232, 255);
+    margin: 1rem 0;
+}
+
+/* -------------------- Footer -------------------- */
 
 .footer {
     width: 100vw;
@@ -103,8 +131,24 @@ body {
     margin: 0;
 }
 
+/* -------------------- Alerts -------------------- */
+
+.alert {
+    padding: 1rem 2rem !important;
+}
+
+/* -------------------- Buttons -------------------- */
+
+.btn-danger {
+    background: rgb(253, 67, 82) !important;
+}
+
+/* -------------------- Media Queries -------------------- */
+
 @media screen and (min-width: 768px) {
+    /* -------------------- Articles -------------------- */
     .articles article {
+        display: inline;
         width: 300px;
         max-height: 400px;
         margin: 1rem;
