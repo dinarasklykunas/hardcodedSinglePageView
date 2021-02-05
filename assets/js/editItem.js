@@ -1,38 +1,38 @@
-let id = new URLSearchParams(location.search).get('id')
-const editItemForm = document.querySelector('#editItemForm')
-const alertMessage = document.querySelector('#alert')
+let id = new URLSearchParams(location.search).get('id');
+const editItemForm = document.querySelector('#editItemForm');
+const alertMessage = document.querySelector('#alert');
 
-const { title, date, image, content, submitButton, deleteButton } = editItemForm.elements
+const { title, date, image, content, submitButton, deleteButton } = editItemForm.elements;
 
 function fillInFormFields() {
     if (!id)
-        return
+        return;
 
     fetch(`http://localhost:3000/items/${id}`)
     .then(res => {
-        return res.status !== 200 ? showAlert(res.statusText, 'danger') : res.json()
+        return res.status !== 200 ? showAlert(res.statusText, 'danger') : res.json();
     })
     .then(data => {
         if (!data)
-            return
+            return;
 
-        title.value = data.title || ''
-        date.value = data.date || ''
-        image.value = data.image || ''
-        content.value = data.content || ''
+        title.value = data.title || '';
+        date.value = data.date || '';
+        image.value = data.image || '';
+        content.value = data.content || '';
     })
-    .catch(err => showAlert(err, 'danger'))
+    .catch(err => showAlert(err, 'danger'));
 }
 
 function handleEditSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!id)
-        return
+        return;
 
     if (!title.value || !date.value || !image.value || !content.value) {
-        showAlert('All fields must be entered!', 'danger')
-        return
+        showAlert('All fields must be entered!', 'danger');
+        return;
     }
 
     let item = {
@@ -40,9 +40,9 @@ function handleEditSubmit(e) {
         date: date.value,
         image: image.value,
         content: content.value
-    }
+    };
 
-    submitButton.disabled = true
+    submitButton.disabled = true;
 
     fetch(`http://localhost:3000/items/${id}`, {
         method: 'PUT',
@@ -52,62 +52,62 @@ function handleEditSubmit(e) {
         body: JSON.stringify(item)
     })
     .then(res => {
-        submitButton.disabled = false
-        return res.status !== 200 ? showAlert(res.statusText, 'danger') : showAlert('Item was updated!', 'success')
+        submitButton.disabled = false;
+        return res.status !== 200 ? showAlert(res.statusText, 'danger') : showAlert('Item was updated!', 'success');
     })
     .catch(err => {
-        submitButton.disabled = false
-        showAlert(err, 'danger')
-    })
+        submitButton.disabled = false;
+        showAlert(err, 'danger');
+    });
 }
 
 function handleDelete() {
     if (!id)
-        return
+        return;
     
     if (!confirm('Do you really want to delete this item?'))
-        return
+        return;
     
-    deleteButton.disabled = true
+    deleteButton.disabled = true;
 
     fetch(`http://localhost:3000/items/${id}`, {
         method: 'DELETE'
     })
     .then(res => {
         if (res.status !== 200) {
-            deleteButton.disabled = false
-            return showAlert(res.statusText, 'danger')
+            deleteButton.disabled = false;
+            return showAlert(res.statusText, 'danger');
         }
 
-        deleteButton.disabled = false
-        showAlert('Item was deleted!', 'success')
-        id = 0
-        editItemForm.reset()
+        deleteButton.disabled = false;
+        showAlert('Item was deleted!', 'success');
+        id = 0;
+        editItemForm.reset();
         setTimeout(() => {
-            location.href = 'index.html'
+            location.href = 'index.html';
         }, 1000);
     })
     .catch(err => {
-        deleteButton.disabled = false
-        showAlert(err, 'danger')
-    })
+        deleteButton.disabled = false;
+        showAlert(err, 'danger');
+    });
 }
 
 function showAlert(message, type) {
-    alertMessage.innerText = message
-    alertMessage.classList = ['alert']
-    alertMessage.classList.add('alert-' + type)
+    alertMessage.innerText = message;
+    alertMessage.classList = ['alert'];
+    alertMessage.classList.add('alert-' + type);
 
     setTimeout(() => {
-        resetAlert()
+        resetAlert();
     }, 3000);
 }
 
 function resetAlert() {
-    alertMessage.innerText = ''
-    alertMessage.classList = []
+    alertMessage.innerText = '';
+    alertMessage.classList = [];
 }
 
-document.addEventListener('DOMContentLoaded', fillInFormFields)
-editItemForm.addEventListener('submit', e => { handleEditSubmit(e) })
-deleteButton.addEventListener('click', handleDelete)
+document.addEventListener('DOMContentLoaded', fillInFormFields);
+editItemForm.addEventListener('submit', e => { handleEditSubmit(e); });
+deleteButton.addEventListener('click', handleDelete);

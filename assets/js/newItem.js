@@ -1,25 +1,25 @@
-const newItemForm = document.querySelector('#newItemForm')
-const alertMessage = document.querySelector('#alert')
+const newItemForm = document.querySelector('#newItemForm');
+const alertMessage = document.querySelector('#alert');
 
-const { title, date, image, content, submitButton } = newItemForm.elements
+const { title, date, image, content, submitButton } = newItemForm.elements;
 
 function handleNewItemSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!title.value || !date.value || !image.value || !content.value) {
-        showAlert('All fields must be entered!', 'danger')
-        return
+        showAlert('All fields must be entered!', 'danger');
+        return;
     }
 
-    handleCreate(title.value, date.value, image.value, content.value)
+    handleCreate(title.value, date.value, image.value, content.value);
 }
 
 function handleCreate(title, date, image, content) {
     let item = {
         title, date, image, content
-    }
+    };
 
-    submitButton.disabled = true
+    submitButton.disabled = true;
 
     fetch('http://localhost:3000/items', {
         method: 'POST',
@@ -30,33 +30,33 @@ function handleCreate(title, date, image, content) {
     })
     .then(res => {
         if (res.status !== 201) {
-            submitButton.disabled = false
-            return showAlert(res.statusText, 'danger')
+            submitButton.disabled = false;
+            return showAlert(res.statusText, 'danger');
         }
         
-        submitButton.disabled = false
-        showAlert('Item was created!', 'success')
-        newItemForm.reset()
+        submitButton.disabled = false;
+        showAlert('Item was created!', 'success');
+        newItemForm.reset();
     })
-    .catch(err => {
-        submitButton.disabled = false
-        showAlert('Server error', 'danger')
-    })
+    .catch(() => {
+        submitButton.disabled = false;
+        showAlert('Server error', 'danger');
+    });
 }
 
 function showAlert(message, type) {
-    alertMessage.innerText = message
-    alertMessage.classList = ['alert']
-    alertMessage.classList.add('alert-' + type)
+    alertMessage.innerText = message;
+    alertMessage.classList = ['alert'];
+    alertMessage.classList.add('alert-' + type);
 
     setTimeout(() => {
-        resetAlert()
+        resetAlert();
     }, 3000);
 }
 
 function resetAlert() {
-    alertMessage.innerText = ''
-    alertMessage.classList = []
+    alertMessage.innerText = '';
+    alertMessage.classList = [];
 }
 
-newItemForm.addEventListener('submit', e => { handleNewItemSubmit(e) })
+newItemForm.addEventListener('submit', e => { handleNewItemSubmit(e); });

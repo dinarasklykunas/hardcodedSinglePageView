@@ -1,4 +1,4 @@
-let itemsDisplayPlace = document.querySelector('#itemsDisplayPlace')
+let itemsDisplayPlace = document.querySelector('#itemsDisplayPlace');
 
 function displayItems() {
     fetch('http://localhost:3000/items')
@@ -13,10 +13,10 @@ function displayItems() {
                         <p>${item.content}</p>
                     </a>
                 </article>
-            `
-        })
+            `;
+        });
     })
-    .catch(err => console.error(`Error: ${err}`))
+    .catch(err => console.error(`Error: ${err}`));
 }
 
-document.addEventListener("DOMContentLoaded", displayItems)
+document.addEventListener('DOMContentLoaded', displayItems);
