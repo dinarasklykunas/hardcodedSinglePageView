@@ -4,40 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hardcoded Single Page View</title>
-    <link rel="stylesheet" href="./assets/css/index.css">
-    <link rel="stylesheet" href="./assets/css/icons.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="icon" href="./assets/img/favicons/favicon-16x16.png">
     <link rel="stylesheet" href="https://nc4-visma.s3.eu-north-1.amazonaws.com/v4.7.1/dist/css/nc.min.css">
     <script src="./assets/js/index.js" defer></script>
 </head>
 <body>
-    <header class="main-header">
-        <div class="row align-items-center text-center">
-            <div class="col-sm-8 text-sm-left">
-                <a href="/">
-                    <img src="./assets/img/sample-logo.png" width="150" alt="logo">
-                </a>
-            </div>
-            <div class="col-sm-3">
-                <input type="search" placeholder="Search...">
-            </div>
-            <div class="login text-center col-sm-1">
+    <header class="main-header d-flex flex-column flex-sm-row align-items-center justify-content-between">
+        <a href="/">
+            <img src="./assets/img/sample-logo.png" width="150" alt="logo">
+        </a>
+        <div class="d-flex flex-column flex-sm-row align-items-center">
+            <input type="search" placeholder="Search...">
+            <div class="login">
                 <a href="#login">
                     <img src="./assets/img/user-avatar.svg" width="30" alt="account" title="Account">
                 </a>
             </div>
         </div>
     </header>
-    <header class="main-menu text-center text-sm-left">
-        <nav>
-            <a href="/">Homepage</a>
-            <a href="#products">Products</a>
-            <a href="#products">Help</a>
-            <a href="#about-us">About Us</a>
-        </nav>
-    </header>
+    <nav class="nav text-center text-sm-left">
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="/" class="nav__link--active">Homepage</a>
+            </li>
+            <li class="nav__item">
+                <a href="#products" class="nav__link">Products</a>
+            </li>
+            <li class="nav__item">
+                <a href="#help" class="nav__link">Help</a>
+            </li>
+            <li class="nav__item">
+                <a href="#about-us" class="nav__link">About Us</a>
+            </li>
+        </ul>
+    </nav>
     <main>
-        <section class="carousel">
+        <section class="carousel d-flex align-items-center justify-content-center">
             <a href="#products/Desktop-Kit-Raspberry-Pi-4B-4GB-RAM-kit-with-case,-keyboard-and-mouse">
                 <img src="./assets/img/products/official-eu-raspberry-pi-4-desktop-kit_contents.jpg" alt="official-eu-raspberry-pi-4-desktop-kit_contents">
             </a>

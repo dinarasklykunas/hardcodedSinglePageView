@@ -1,0 +1,14 @@
+.main-header {
+    @include set-background(darken($light-color, 3%));
+    padding: 0 3rem;
+    
+    .login {
+        margin: 1rem 2rem;
+    }
+    
+    a {
+        color: $link-color;
+        text-decoration: none;
+        transition: color .25s;
+    }
+}

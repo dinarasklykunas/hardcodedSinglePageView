@@ -1,0 +1,39 @@
+.articles {
+    margin: 7.5rem 0;
+    
+    header {
+        border-bottom: 1px solid darken($light-color, 5%);
+    }
+    
+    article {
+        margin: 1rem;
+        line-height: 1.7;
+        overflow: hidden;
+        transition: background-color .25s;
+    }
+    
+    article:hover {
+        background-color: lighten($light-color, 10%);
+    }
+    
+    article a > h4 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    article a {
+        text-decoration: none;
+    }
+    
+    article img {
+        max-width: 288px;
+        max-height: 288px;
+    }
+
+    @media screen and (min-width: 768px) {
+        article {
+            width: 300px;
+            max-height: 400px;
+            margin: 1rem;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.nav {
+    padding: 1rem 2rem;
+    line-height: 1.7;
+    &__list {
+        list-style-type: none;
+        margin: 0;
+    }
+
+    &__item {
+        display: inline;
+
+        &:not(:last-child):after {
+            content: " |";
+        }
+    }
+
+    &__link {
+        color: $link-color !important;
+        text-decoration: none;
+        transition: color .25s;
+
+        &:hover {
+            color: lighten($link-color, 30%) !important;
+        }
+
+        &--active {
+            color: lighten($link-color, 30%) !important;
+            text-decoration: none;
+        }
+    }
+}

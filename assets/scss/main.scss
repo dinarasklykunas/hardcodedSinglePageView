@@ -1,0 +1,30 @@
+@import './base/colors';
+@import './base/variables';
+@import './base/mixins';
+@import './layout/main-header';
+@import './layout/nav';
+@import './layout/carousel';
+@import './layout/articles';
+@import './layout/forms';
+@import './layout/footer';
+@import './layout/alerts';
+@import './layout/buttons';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a:link { color: $black; }
+a:visited { color: $black; }
+a:hover { color: $black; }
+a:active { color: $black; }
+
+html,
+body {
+    @include set-background($light-color);
+    padding: 0 !important;
+    font-size: 16px;
+    font-family: $font-stack;
+}

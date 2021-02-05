@@ -1,0 +1,7 @@
+.carousel {
+    @include set-background(white);
+    
+    img {
+        max-width: 100%;
+    }
+}

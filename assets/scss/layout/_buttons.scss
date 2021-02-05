@@ -1,0 +1,7 @@
+.btn-danger {
+    background: $danger !important;
+    
+    &:hover {
+        background: lighten($danger, 15%) !important;
+    }
+}

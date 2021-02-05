@@ -6,7 +6,7 @@ function displayItems() {
     .then(data => {
         data.forEach(item => {
             itemsDisplayPlace.innerHTML += `
-                <article>
+                <article class="d-flex justify-content-center align-items-center">
                     <a href="edit.html?id=${item.id}">
                         <img src="${item.image}" alt="${item.title}">
                         <h4>${item.title}</h4>
