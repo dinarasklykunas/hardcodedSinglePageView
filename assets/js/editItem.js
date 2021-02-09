@@ -12,7 +12,8 @@ function fillInFormFields() {
 
     fetch(`http://localhost:3000/items/${id}`)
     .then(res => {
-        return res.status !== 200 ? showAlert(res.statusText, 'danger') : res.json();
+        return res.status !== 200 ?
+            showAlert(res.statusText, 'danger') : res.json();
     })
     .then(data => {
         if (!data)
@@ -30,11 +31,10 @@ function handleEditSubmit(e) {
     e.preventDefault();
 
     if (!id)
-        return;
+        return showAlert('Item id cannot be empty!', 'danger');
 
     if (!title.value || !date.value || !image.value || !content.value) {
-        showAlert('All fields must be entered!', 'danger');
-        return;
+        return showAlert('All fields must be entered!', 'danger');
     }
 
     let item = {
@@ -66,7 +66,7 @@ function handleEditSubmit(e) {
 
 function handleDelete() {
     if (!id)
-        return;
+        return showAlert('Item id cannot be empty!', 'danger');
     
     if (!confirm('Do you really want to delete this item?'))
         return;
@@ -84,7 +84,6 @@ function handleDelete() {
 
         deleteButton.disabled = false;
         showAlert('Item was deleted!', 'success');
-        id = 0;
         editItemForm.reset();
         setTimeout(() => {
             location.href = 'index.html';
