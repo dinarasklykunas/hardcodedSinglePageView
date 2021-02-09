@@ -3,6 +3,8 @@ const alertMessage = document.querySelector('#alert');
 
 const { title, date, image, content, submitButton } = newItemForm.elements;
 
+const itemsUrl = 'http://localhost:3000/items';
+
 function handleNewItemSubmit(e) {
     e.preventDefault();
 
@@ -21,7 +23,7 @@ function handleCreate(title, date, image, content) {
 
     submitButton.disabled = true;
 
-    fetch('http://localhost:3000/items', {
+    fetch(itemsUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

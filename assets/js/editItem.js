@@ -10,7 +10,7 @@ function fillInFormFields() {
     if (!id)
         return;
 
-    fetch(`http://localhost:3000/items/${id}`)
+    fetch(`${itemsUrl}/${id}`)
     .then(res => {
         return res.status !== 200 ?
             showAlert(res.statusText, 'danger') : res.json();
