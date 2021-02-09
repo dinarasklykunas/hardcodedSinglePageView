@@ -1,8 +1,10 @@
-let id = new URLSearchParams(location.search).get('id');
+const id = new URLSearchParams(location.search).get('id');
 const editItemForm = document.querySelector('#editItemForm');
 const alertMessage = document.querySelector('#alert');
 
 const { title, date, image, content, submitButton, deleteButton } = editItemForm.elements;
+
+const itemsUrl = 'http://localhost:3000/items';
 
 function fillInFormFields() {
     if (!id)
@@ -44,7 +46,7 @@ function handleEditSubmit(e) {
 
     submitButton.disabled = true;
 
-    fetch(`http://localhost:3000/items/${id}`, {
+    fetch(`${itemsUrl}/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -53,7 +55,8 @@ function handleEditSubmit(e) {
     })
     .then(res => {
         submitButton.disabled = false;
-        return res.status !== 200 ? showAlert(res.statusText, 'danger') : showAlert('Item was updated!', 'success');
+        return res.status !== 200 ?
+            showAlert(res.statusText, 'danger') : showAlert('Item was updated!', 'success');
     })
     .catch(err => {
         submitButton.disabled = false;
@@ -70,7 +73,7 @@ function handleDelete() {
     
     deleteButton.disabled = true;
 
-    fetch(`http://localhost:3000/items/${id}`, {
+    fetch(`${itemsUrl}/${id}`, {
         method: 'DELETE'
     })
     .then(res => {

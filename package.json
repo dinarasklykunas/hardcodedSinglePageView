@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "lite-server -c configs/bs-config.json",
-    "server": "json-server --watch database/db.json",
+    "database": "json-server --watch database/db.json",
     "styles": "sass --watch --style=compressed --no-source-map assets/scss/main.scss assets/css/main.css"
   },
   "repository": {
